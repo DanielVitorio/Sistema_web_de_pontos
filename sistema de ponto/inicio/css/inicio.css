@@ -1,0 +1,55 @@
+/* Define as variáveis CSS para o tema dark */
+:root {
+  --primary-text: #2a225a;
+  --text: #7f73a1;
+  --form-bg: #fafbff;
+  --bg: #eaeefd;
+  --hove: #dddddd;
+  --menu:#210856;
+  --color-a-menu: rgba(48, 48, 48, 0.6);
+}
+
+/* Define as variáveis CSS para o tema light */
+[data-theme="light"] {
+  --primary-text: #fbf9ff;
+  --text: #b8bcd2;
+  --form-bg: #210856;
+  --bg: #493c65;
+  --hove: #7f73a1;
+  --color-a-menu: rgba(255,255,255, 0.6);
+  --menu:#313446;
+}
+
+/* Define o estilo padrão para todos os elementos na página */
+* {
+  font-family: "Roboto", sans-serif;
+  transition-property: background color;
+  transition-duration: 600ms;
+  text-decoration: none;
+}
+
+/* Define a aparência do corpo da página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 100vh;
+}
+
+/* Define a aparência do contêiner principal que envolve o formulário */
+.main {
+  height: 90vh;
+  display: flex;
+  width: 100%;
+  max-width: 10000px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+input[type='checkbox']{
+display: none;
+}
+

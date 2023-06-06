@@ -1,0 +1,161 @@
+/* Define as variáveis CSS para o tema dark */
+:root {
+  --primary-text: #2a225a;
+  --text: #7f73a1;
+  --form-bg: #fafbff;
+  --bg: #eaeefd;
+  --hove: #dddddd;
+  --menu:#210856;
+  --color-a-menu: rgba(48, 48, 48, 0.6);
+}
+
+/* Define as variáveis CSS para o tema light */
+[data-theme="light"] {
+  --primary-text: #fbf9ff;
+  --text: #b8bcd2;
+  --form-bg: #210856;
+  --bg: #493c65;
+  --hove: #7f73a1;
+  --color-a-menu: rgba(255,255,255, 0.6);
+  --menu:#313446;
+}
+
+/* Define o estilo padrão para todos os elementos na página */
+* {
+  font-family: "Roboto", sans-serif;
+  transition-property: background color;
+  transition-duration: 600ms;
+  text-decoration: none;
+}
+
+/* Define a aparência do corpo da página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 100vh;
+}
+
+/* Define a aparência do contêiner principal que envolve o formulário */
+.main {
+  height: 95vh;
+  display: flex;
+  width: 100%;
+  max-width: 10000px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+input[type='checkbox']{
+display: none;
+}
+
+.container-menu{
+  width: 250px;
+  height: 100%;
+  background-color: var(--form-bg);
+  border-radius: 20px 0px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px var(--bg);
+  border-bottom: solid 1px var(--bg);
+}
+
+.container-menu span{
+  font-size: 20px !important;
+  font-weight: bold;
+  padding: 5px;
+  color: var(--color-a-menu);
+}
+
+
+.svg{
+  color: var(--color-a-menu);
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.menu{
+  padding-top: 13px;
+  padding-bottom: 13px;
+  cursor: pointer;
+}
+
+#marcar{
+ background-image: linear-gradient(90deg, #00C1EB 0%, #0094FF 100%) !important;
+ padding: 12px;
+ border-radius: 15px;
+ width: 70%;
+ margin: 0 auto;
+ margin-bottom: 5%;
+ margin-top: 5%;
+ color: #fafbff;
+ cursor: pointer;
+}
+
+.logo{
+  border-bottom: 1px solid var(--bg);
+  border-top: 1px solid var(--bg);
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.logo > img{
+  margin-left: 25px;
+  width: 200px;
+}
+
+.inicio-menu{
+ padding-top: 4% !important;
+}
+
+#pessoal{
+  border-top: 2px solid var(--bg);
+  padding-top: 5%;
+  margin-top: 10%;
+}
+
+.pessoal{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+#sair{
+  margin-top: 5px;
+}
+
+#perfil{
+  width: 80px;
+  height: 80px;
+  background-color: var(--form-bg);
+  border-radius: 50%;
+  margin: 0 auto;
+  top: 20px;
+  right: 25px;
+  display: flex;
+  border: solid 3px var(--color-a-menu);
+  position: fixed;
+}
+
+
+/*hover*/
+  
+.menu:hover{
+  background-color: var(--bg);
+}
+
+#marcar:hover{
+  box-shadow: 0 0 10px #00C1EB;
+}
+
+.pessoal:hover{
+  background-color: var(--bg);
+}
+
+/*focus*/

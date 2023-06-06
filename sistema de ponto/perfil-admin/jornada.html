@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+  <head>
+    <!-- Definição do tipo de documento e idioma -->
+    <meta charset="UTF-8"/>
+    <title>Dponto | jornada mensal</title>
+    <!-- Configuração do ícone da página -->
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <!-- Importação do kit de ícones Font Awesome -->
+    <script src="https://kit.fontawesome.com/7f335cf7b9.js" crossorigin="anonymous"></script>
+    <!-- Importação da fonte Roboto do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./css/jornada.css" />
+    <!-- Importação do arquivo de script responsável pela mudança de tema -->
+    <script src="./js/jornada.js"></script>
+
+
+  </head>
+  <body class="themed">
+      <!-- Container para a imagem de ilustração -->
+      <div id="illustration"></div>
+        <!-- Container para o seletor de tema -->
+        <div class="theme-selector">
+          <input type="checkbox" id="switch" onchange="onThemeChange()" value="dark" />
+        </div>
+    <div class="container">
+ 
+      <div class="grafico-container">
+           <div id="grafico">
+            <canvas id="myChart" style="width: 100%; height: 100%;"></canvas>
+           </div>
+       </div>
+
+    </div>
+
+    <!--script--------------------------------------------------------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      //script do gráfico----------------------------------------
+      const ctx = document.getElementById('myChart');
+    
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '08/04', '09/04', '10/04', '11/04', '12/04', '13/04', '14/04', '15/04', '16/04', '17/04', '18/04', '19/04', '20/04', '21/04', '22/04', '23/04', '24/04', '25/04', '26/04', '27/04', '28/04', '29/04', '30/04'],
+          datasets: [{
+            label: 'MÉDIA MENSAL TRABALHADA /horas',
+            data: [12, 5, 3, 5, 2, 3, 7, 15, 18, 4, 1, 20, 16, 9, 7, 8, 14, 13, 1, 17, 2, 11, 6, 19, 12, 10, 8, 10, 13, 16],
+            borderWidth: 1
+          },{
+          label: 'MÉDIA MENSAL DE HORAS EXTRAS /horas',
+            data: [5, 8, 4, 4, 9, 18, 20, 2, 1, 4, 1, 10, 14, 9, 7, 8, 14, 13, 1, 17, 2, 0, 1, 9, 12, 10, 8, 10, 13, 16],
+            borderWidth: 1
+        }]
+          
+          
+        }, 
+        
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

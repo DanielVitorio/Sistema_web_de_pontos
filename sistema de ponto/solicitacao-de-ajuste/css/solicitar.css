@@ -1,0 +1,209 @@
+/* Define as variáveis CSS para o tema dark */
+:root {
+  --primary-text: #2a225a;
+  --text: #7f73a1;
+  --form-bg: #fafbff;
+  --bg: #eaeefd;
+  --hove: #dddddd;
+  --menu:#210856;
+  --color-a-menu: rgba(48, 48, 48, 0.6);
+}
+
+/* Define as variáveis CSS para o tema light */
+[data-theme="light"] {
+  --primary-text: #fbf9ff;
+  --text: #b8bcd2;
+  --form-bg: #210856;
+  --bg: #493c65;
+  --hove: #7f73a1;
+  --color-a-menu: rgba(255,255,255, 0.6);
+  --menu:#313446;
+}
+
+/* Define o estilo padrão para todos os elementos na página */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Define a aparência do corpo da página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 100vh;
+}
+
+/* Define a aparência do contêiner principal que envolve o formulário */
+.main {
+  height: 90vh;
+  display: flex;
+  width: 100%;
+  max-width: 10000px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+input[type='checkbox']{
+display: none;
+}
+
+.container-calendario{
+  background-color: var(--form-bg);
+  width: 700px;
+  height: 555px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+
+}
+#calendario-nucleo{
+  width: 98%;
+  height: 98%;
+  border: dashed 2px var(--bg);
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: -15px;
+  
+
+}
+
+#calendar{
+  width: 87%;
+  height: 93%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+/* Muda a cor da linha do calendário */
+.fc{
+  color: var(--color-a-menu);
+}
+
+/* Muda a cor da fonte do calendário */
+.fc .fc-toolbar-title {
+  color: var(--color-a-menu);
+}
+
+.fc-event{
+ color: #210856;
+}
+
+/*formulario*/
+
+form > button{
+  text-decoration: bolder;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  background-image:  linear-gradient(90deg, #00C1EB 0%, #0094FF 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  margin-top: 10px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+legend{
+   text-align: center;
+   margin-bottom: 40px;
+}
+
+input, select, .anexo{
+  color:#bcbcbc;
+  margin: 10px 0;
+  border: solid 1px transparent;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--bg);
+  outline: none;
+  width: 90%;
+  margin-left: 5%;
+  font-size: 13pt;
+}
+
+select{
+  cursor: pointer;
+}
+
+input{
+  width: 83% !important;
+}
+
+
+.formulario{
+  background-color: var(--form-bg);
+  height: 555px;
+  border-radius: 20px;
+  margin-left: 30px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  width: 350px;
+}
+
+span{
+  margin-left: 5%;
+}
+
+form{
+  border: dashed 2px var(--bg);
+  height: 520px;
+  width: 330px;
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-top: 4%;
+  color: var(--color-a-menu);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label{
+  margin-left: 5%;
+}
+
+.anexo{
+  height: 20px;
+  width: 85%;
+}
+
+svg{
+  margin-bottom: 5px;
+}
+
+.anexo svg,
+.anexo span {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* hover */
+
+form > button:hover{
+  box-shadow: 0 0 2px white ;
+}
+
+input:hover, .anexo:hover{
+  background-color: var(--hove);
+  border: solid 1px hsl(0, 0%, 22%);
+  color: rgb(39, 39, 39);
+}
+
+input:focus, .anexo:focus{
+  background-color: var(--hove);
+  border: solid 1px hsl(0, 0%, 22%);
+  color: rgb(39, 39, 39);
+}
+
+
+
+
+/*resposivo*/
+

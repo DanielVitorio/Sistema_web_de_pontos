@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+  <head>
+    <!-- Definição do tipo de documento e idioma -->
+    <meta charset="UTF-8"/>
+    <title>Dponto - sistema de ponto web</title>
+    <!-- Configuração do ícone da página -->
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <!-- Importação do kit de ícones Font Awesome -->
+    <script src="https://kit.fontawesome.com/7f335cf7b9.js" crossorigin="anonymous"></script>
+    <!-- Importação da fonte Roboto do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./css/login.css" />
+    <!-- Importação do arquivo de script responsável pela mudança de tema -->
+    <script src="./js/theme.js"></script>
+  </head>
+  <body class="themed">
+    <div class="main">
+      <!-- Container para a imagem de ilustração -->
+      <div id="illustration"></div>
+      <!-- Container para o formulário de login -->
+      <div class="form-container">
+        <!-- Container para o seletor de tema -->
+        <div class="theme-selector">
+          <input type="checkbox" id="switch" onchange="onThemeChange()" value="dark" />
+          <label for="switch">Toggle</label>
+        </div>
+        <!-- Container para o cabeçalho do formulário -->
+        <div class="form-header"></div>
+        <!-- Formulário de login -->
+        <form form action="./entrar.php" method="post">
+          <span id="spanCpf">CPF:</span>
+          <input type="text" id="cpf" name="cpf" placeholder="">
+          <span id="spanSenha">Senha:</span>
+          <input type="password" name="senha" id="senha">
+          <span id="incorreto">Usuário ou senha incorreto.</span>
+          <button type="submit" action="./entrar.php" value="Entrar">ENTRAR</button>
+          <br>
+          <br>
+        </form>
+        <!-- Link para recuperação de senha -->
+        <p><a id="recuperarSenha" href="">Esqueci minha senha.</a></p>
+      </div>
+    </div>
+  </body>
+</html>

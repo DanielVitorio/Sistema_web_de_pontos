@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+  <head>
+    <!-- Definição do tipo de documento e idioma -->
+    <meta charset="UTF-8"/>
+    <title>Dponto | Ajuste de ponto</title>
+    <!-- Configuração do ícone da página -->
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <!-- Importação do kit de ícones Font Awesome -->
+    <script src="https://kit.fontawesome.com/7f335cf7b9.js" crossorigin="anonymous"></script>
+    <!-- Importação da fonte Roboto do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./css/solicitar.css" />
+    <!-- Importação do arquivo de script responsável pela mudança de tema -->
+    <script src="./js/solicitar.js"></script>
+  </head>
+  <body class="themed">
+      <!-- Container para a imagem de ilustração -->
+      <div id="illustration"></div>
+        <!-- Container para o seletor de tema -->
+        <div class="theme-selector">
+          <input type="checkbox" id="switch" onchange="onThemeChange()" value="dark" />
+        </div>
+      <div class="container-calendario">
+        <br>
+        <div id="calendario-nucleo">
+            <div id='calendar'></div>
+        </div>
+      </div> <!--container calendario-->
+
+      <div class="formulario">
+       <form action="solicitar">
+        <legend><h3>SOLICITAR REAJUSTE</h3></legend>
+
+        <label for="seletor-ajuste">Tipo de solicitação:</label>
+        <br>
+        <select name="seletor-ajuste" id="seletor-ajuste">
+          <option value=""></option>
+          <option value="ajuste">Ajuste</option>
+          <option value="abono">Abono</option>
+        </select>
+        <br>
+        <br>
+        <label for="motivo">Motivo:</label>
+        <br>
+        <input type="text" name="motivo" id="motivo">
+        <br>
+        <br>
+
+        <label style="cursor: pointer;" for="anexo">Anexar atestado ou documento (opcional):
+        <br>
+      <div class="anexo">
+        <input type="file" name="anexo" id="anexo" onchange="updateAnexoText()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 12 16">
+            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+          </svg>
+          <span style="padding-right: 55px;">Selecione um arquivo</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+            <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+          </svg>
+
+        <br>
+        <br>
+      </div>
+    </label>
+        <span>Ponto para reajustar:</span><div></div>
+        <br>
+        <span>Novo Horário: <input style="width: 160px !important;" type="time" name="horas-reajuste" id="horas-reajuste"></span>
+
+        <button>Enviar solicitação</button>
+       </form>
+    </div>
+  </body>
+
+
+<!--style-->
+<style>
+  /*eventos do calendario*/
+  .fc-daygrid-more-link {
+  background-color: green !important;
+  color: white !important;
+}
+
+.fc-popover{
+  background-color: var(--bg) !important;
+}
+
+
+</style>
+
+<!--script -->    
+<!-- Inclua os arquivos do Moment.js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+<!-- Inclua o arquivo do FullCalendar -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+<script>
+  
+
+  //mudando para o nome do anexo quando tiver selecionado / acrecentando ... se o aquivo for maior que 19 caracteres / e adicionando a extenção depois do ...
+  function updateAnexoText() {
+  var fileInput = document.getElementById('anexo');
+  var fileName = fileInput.value.split('\\').pop(); // obtem o nome do arquivo selecionado
+  if (fileName.length > 19) {
+    var extensionStart = fileName.lastIndexOf(".");
+    var extension = "";
+    if (extensionStart != -1) {
+      extension = fileName.substring(extensionStart);
+      fileName = fileName.substring(0, 19) + ".." + extension;
+    } else {
+      fileName = fileName.substring(0, 19) + "..";
+    }
+  }
+  var anexoText = document.querySelector('.anexo');
+  anexoText.style.maxWidth = "100%";
+  anexoText.textContent = fileName;
+  document.querySelector('.anexo').style = 'color: rgb(39, 39, 39);'
+}
+
+//calendário-------------------------------------api Full calendar ----------------------------------------------
+  
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      // Configurações do calendário
+    locale: 'pt-br', // Usa a tradução em português
+  
+    selectable: true,
+    select: function(info) {
+
+      // Aqui você pode inserir a lógica para buscar as informações correspondentes à data selecionada no banco de dados
+      console.log('Data selecionada: ' + info.startStr);
+    },
+    
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay',
+      
+    },
+
+    buttonText: {
+      // texto dos botões
+      today: 'Hoje',
+      month: 'Mês',
+      week: 'Semana',
+      day: 'Dia',
+      list: 'Lista'
+    },
+
+    navLinks: true, // pode clicar em dias/nomes de eventos para navegar até outros dias/nomes de eventos
+    businessHours: true, // exibe horário comercial
+    editable: true, // permite que arraste e solte
+    dayMaxEvents: true, // permite que mais eventos sejam exibidos em um dia
+    eventBorderColor: 'green',
+    events: [ //permite colocar eventos, e aqui irei colocar os pontos registrados
+      {
+        title: 'ponto de entrada registrado',
+        start: '2023-04-01T16:00:00',
+        url: 'https://google.com', //url que será redirecionado ao clicar no evento
+      },
+
+      {
+        title: 'ponto de saida registrado',
+        start: '2023-04-01T16:20:00'
+        
+      },
+
+
+      {
+        title: 'ponto de entrada registrado',
+        start: '2023-04-02T16:00:00'
+      },
+      {
+        title: 'ponto de entrada registrado',
+        start: '2023-04-03T16:00:00'
+      }
+      // adicione mais eventos aqui
+    ],
+
+
+    allDayText: 'Horas' //altera o texto 'all-day' para 'horas'
+
+    
+  });
+  
+
+  calendar.render();
+});
+
+
+  </script>
+</html>

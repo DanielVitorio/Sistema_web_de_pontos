@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+  <head>
+    <!-- Definição do tipo de documento e idioma -->
+    <meta charset="UTF-8"/>
+    <title>Dponto | Registro de ponto</title>
+    <!-- Configuração do ícone da página -->
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <!-- Importação do kit de ícones Font Awesome -->
+    <script src="https://kit.fontawesome.com/7f335cf7b9.js" crossorigin="anonymous"></script>
+    <!-- Importação da fonte Roboto do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./css/registro.css" />
+    <!--font do relogio-->
+    <link href="./font/Talk Comic.otf" rel="stylesheet">
+    <!-- Importação do arquivo de script responsável pela mudança de tema -->
+    <script src="./js/registro.js"></script>
+  </head>
+  <body class="themed">
+      <!-- Container para a imagem de ilustração -->
+      <div id="illustration"></div>
+        <!-- Container para o seletor de tema -->
+        <div class="theme-selector">
+          <input type="checkbox" id="switch" onchange="onThemeChange()" value="dark" />
+        </div>
+
+
+        <div class="container-registro">
+          <div class="registrar">
+            <h2>REGISTRO</h2>
+        
+           <span id="horario">
+              <h2></h2>
+           </span><!--relógio e quando marcar o ponto ele receberá om display none-->
+
+           <div class="progresso">
+              
+           </div>
+
+            
+            <div class="informacao-do-registro">
+              <label for="data-marcada"></label>
+              <div name="data-marcada" id="data-marcada"></div>
+
+              <label for="hora-marcado"></label>
+              <div name="hora-marcada" id="hora-marcado"></div>
+            </div> <!--aparecerá a data e hora que foi registrdo o ponto mas se não registrar irá ficar como display none-->
+
+            <div class="temporizador">
+              <div class="box">
+                <div class="box-circle">
+                    <svg>
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle id="circleProgress" cx="70" cy="70" r="70"></circle>
+                    </svg>
+                </div>
+                <div class="number">
+                    <div id="tempo-da-barra"><h2 id="tempo-trabalhado"></h2></div><h2 id="valor-number" style="display: none;">50</h2><!--h2 #valor-number é teste, pois no lugar dele será a informação do cronometro no banco de dados-->
+                </div>
+            </div>
+            </div><!--tempo barra de progresso com o tempo trabalhado no dia-->
+
+              <button id="botao-do-ponto" title="Marcar ponto" onclick="marcar()" name="marcarPonto" value="">
+                <svg xmlns="http://www.w3.org/2000/svg" id="polegar" style="color: white;" width="70%" height="70%" fill="currentColor" class="bi bi-fingerprint" viewBox="0 0 16 16">
+                    <path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
+                    <path d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332c0 .409-.022.816-.066 1.221A.5.5 0 0 1 6 8.447c.04-.37.06-.742.06-1.115V7Zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8Zm-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329Z"/>
+                    <path d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334Zm.3 1.67a.5.5 0 0 1 .449.546 10.72 10.72 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.72 9.72 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z"/>
+                    <path d="M3.902 4.222a4.996 4.996 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 3.996 3.996 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556Zm6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705ZM3.68 5.842a.5.5 0 0 1 .422.568c-.029.192-.044.39-.044.59 0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.531 6.531 0 0 0 3.058 7c0-.25.019-.496.054-.736a.5.5 0 0 1 .568-.422Zm8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.51 10.51 0 0 0 .584-2.678.5.5 0 0 1 .54-.456Z"/>
+                    <path d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865Zm-.89 1.257a.5.5 0 0 1 .04.706A5.478 5.478 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346Zm12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49Z"/>
+                  </svg>
+              </button>
+          </div> <!--div principal da marcação de pontos-->
+        </div><!--container registro-->  
+
+        <div class="container-informacoes">
+            <div class="informacoes">
+              <div class="historico-do-dia">
+                <h2>INFORMAÇÕES DO DIA</h2>
+
+
+              <div class="informacao">
+
+                <div class="infor" id="ultimo">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="svg" width="20" height="20" fill="currentColor" class="bi bi-hand-index-thumb-fill" viewBox="0 0 16 16">
+                      <path d="M8.5 1.75v2.716l.047-.002c.312-.012.742-.016 1.051.046.28.056.543.18.738.288.273.152.456.385.56.642l.132-.012c.312-.024.794-.038 1.158.108.37.148.689.487.88.716.075.09.141.175.195.248h.582a2 2 0 0 1 1.99 2.199l-.272 2.715a3.5 3.5 0 0 1-.444 1.389l-1.395 2.441A1.5 1.5 0 0 1 12.42 16H6.118a1.5 1.5 0 0 1-1.342-.83l-1.215-2.43L1.07 8.589a1.517 1.517 0 0 1 2.373-1.852L5 8.293V1.75a1.75 1.75 0 0 1 3.5 0z"/>
+                    </svg><span> Útimo ponto registrado:</span><div id="ultimo-ponto"></div><!--nessa div vai entrar o ultimo ponto registrado-->
+              </div><!--mostrsrá o horário do ultimo ponto registrado a data e a hora-->
+
+                <div class="infor" id="total-do-dia">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="svg" width="20" height="20" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
+                    <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+                  </svg><span> Horas totais trabalhadas:</span><div id="horas-totais"></div><!--nessa div irá a mesma informação que no centro do circulo de progresso-->
+                </div><!--mostrará o total de pontos batidos no dia-->
+                
+                <div class="infor" id="horas-necessarias">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="svg" width="20" height="20" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                    <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                  </svg><span> Horas necessárias:</span><div id="horas-necessarias"></div><!--essa div irá a carga horária necessárias por dia-->
+                </div><!--mostrará as horas de trabalho necessárias no dia-->
+
+                <div class="infor" id="horarios-dos-pontos-registrados-hoje">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                  </svg><span> Pontos registrados hoje:</span><div id="pontos-registrados"></div><!--nessa div irá os pontos registrados no dia-->
+                </div><!--mostrará todos os pontos registrados no dia-->
+              </div>
+
+              <div class="infor" id="emitir-comprovante">
+                <svg xmlns="http://www.w3.org/2000/svg" class="svg" width="20" height="20" fill="currentColor" class="bi bi-stickies-fill" viewBox="0 0 16 16">
+                  <path d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"/>
+                  <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"/>
+                </svg><span> Emitir Comprovante </span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                  <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                </svg>
+              </div><!--com o onclick dessa div irá criar uma janelinha de comprovante-->
+
+
+              </div>
+            </div>
+        </div>
+
+
+  </body>
+</html>
+<!--style-->
+<style>
+
+</style>
+
+<!-----------------scripts------------->
+<script>
+     //relógio do ponto pega o horário do navegador
+     const horario = document.querySelector('#horario h2');
+
+function formataData(data) {
+  let hora = zeroAEsquerda(data.getHours());
+  let minuto = zeroAEsquerda(data.getMinutes());
+  let segundo = zeroAEsquerda(data.getSeconds());
+  return `${hora}:${minuto}:${segundo}`;
+}
+
+function zeroAEsquerda(valor) {
+  valor = valor < 10 ? '0' + valor : valor;
+  return valor;
+}
+
+setInterval(function() {
+  const data = new Date(Date.now()); // Obtém a hora exata usando a API de data e hora do navegador
+  const databrasileira = formataData(data);
+  horario.innerHTML = databrasileira;
+}, 1000); // Define o relógio ao vivo na tela
+    
+</script>

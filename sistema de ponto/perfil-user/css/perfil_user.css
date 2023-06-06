@@ -1,0 +1,275 @@
+/* Define as variáveis CSS para o tema dark */
+:root {
+  --primary-text: #2a225a;
+  --text: #7f73a1;
+  --form-bg: #fafbff;
+  --bg: #eaeefd;
+  --hove: #dddddd;
+  --menu:#210856;
+  --color-a-menu: rgba(48, 48, 48, 0.6);
+}
+
+/* Define as variáveis CSS para o tema light */
+[data-theme="light"] {
+  --primary-text: #fbf9ff;
+  --text: #b8bcd2;
+  --form-bg: #210856;
+  --bg: #493c65;
+  --hove: #7f73a1;
+  --color-a-menu: rgba(255,255,255, 0.6);
+  --menu:#313446;
+}
+
+/* Define o estilo padrão para todos os elementos na página */
+* {
+  font-family: "Roboto", sans-serif;
+  transition-property: background color;
+  transition-duration: 600ms;
+  text-decoration: none;
+}
+
+/* Define a aparência do corpo da página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 100vh;
+}
+
+/* Define a aparência do contêiner principal que envolve o formulário */
+.main {
+  height: 90vh;
+  display: flex;
+  width: 100%;
+  max-width: 10000px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+input[type='checkbox']{
+display: none;
+}
+
+.container{
+  width: 90vw;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+
+/*parte do perfil usuario*/
+#escopo{
+  width: 500px;
+  height: 600px;
+  background-color: var(--form-bg);
+  border-radius: 20px;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  justify-content: left;
+}
+
+#nucleo-escopo{
+  width: 97%;
+  height: 97%;
+  border: dashed 2px var(--bg);
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 6px;
+}/*nucleo do escopo, ficará tudo relacionado a pessoa*/
+
+#foto-perfil{
+  width: 200px;
+  height: 200px;
+  background-color: var(--bg);
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  border: solid 3px var(--color-a-menu);
+}
+
+  /*botão da foto*/
+  #mudar-foto > label > div{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--bg);
+    background-image:  linear-gradient(90deg, #00C1EB 0%, #0094FF 100%);
+    position: absolute;
+    margin-top: 150px;
+    margin-left: -60px;
+}
+
+#foto-perfil > svg{
+  margin: 0 auto;
+  margin-top: 20%;
+  color: var(--color-a-menu);
+  
+}
+
+#mudar-foto{
+  justify-content: center;
+  align-items: center;
+}
+
+#mudar-foto > svg{
+  margin-top: 20%;
+  margin-left: 20%;
+}
+
+h3, h2{
+  color: var(--color-a-menu);
+  text-align: center;
+}
+
+h4{
+  color: var(--color-a-menu);
+  margin-left: 20px;
+}
+
+
+
+#mudar-senha{
+  text-decoration: bolder;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  background-image:  linear-gradient(90deg, #00C1EB 0%, #0094FF 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  margin-top: 10px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+
+/*tela para mudar senha*/
+#tela-mudar-senha{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+#tela-mudar-senha > form{
+  width: 400px;
+  height: 250px;
+  background-color: var(--form-bg);
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px var(--bg);
+  border-bottom: solid 1px var(--bg);
+  padding: 20px 0;
+  margin: 0 auto;
+  margin-top: 10%;
+  color: var(--color-a-menu);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+}
+
+#tela-mudar-senha > form > input[type='password']{
+  color:#bcbcbc;
+  margin: 10px 0;
+  border: solid 1px transparent;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--bg);
+  outline: none;
+  width: 85%;
+  margin-left: 5%;
+  font-size: 13pt;
+}
+
+#tela-mudar-senha > form > label{
+  margin-left: 5%;
+}
+
+#tela-mudar-senha > form > button{
+  text-decoration: bolder;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  background-image:  linear-gradient(90deg, #00C1EB 0%, #0094FF 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  margin-top: 10px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+#fechar{
+  cursor: pointer;
+  margin-left: 370px;
+}
+
+
+/*informações gerais*/
+
+.informacoes-gerais{
+  width: 600px;
+  height: 600px;
+  background-color: var(--form-bg);
+  border-radius: 20px;
+  margin-left: 70px;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+
+}
+
+#informacoes-gerais-nucleo{
+  width: 97%;
+  height: 97%;
+  border: dashed 2px var(--bg);
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 6px;
+}
+
+#informacoes-gerais-nucleo > legend{
+  color: var(--color-a-menu);
+}
+
+
+
+
+/*hover*/
+
+input[type="password"]:hover{
+  background-color: var(--hove) !important;
+  color: rgb(39, 39, 39) !important;
+}
+
+form > span > svg:hover{
+  color: #800606;
+  transition-property: none;
+  transition-duration: none;
+  text-decoration: none;
+}
+
+
+/*focus*/
+
+input[type="password"]:focus{
+  background-color: var(--hove) !important;
+  color: rgb(39, 39, 39) !important;
+}

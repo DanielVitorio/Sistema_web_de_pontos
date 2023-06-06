@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+  <head>
+    <!-- Definição do tipo de documento e idioma -->
+    <meta charset="UTF-8"/>
+    <title>Dponto | jornada mensal</title>
+    <!-- Configuração do ícone da página -->
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <!-- Importação do kit de ícones Font Awesome -->
+    <script src="https://kit.fontawesome.com/7f335cf7b9.js" crossorigin="anonymous"></script>
+    <!-- Importação da fonte Roboto do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./css/perfil_user.css" />
+    <!-- Importação do arquivo de script responsável pela mudança de tema -->
+    <script src="./js/perfil_user.js"></script>
+
+
+  </head>
+  <body class="themed">
+      <!-- Container para a imagem de ilustração -->
+      <div id="illustration"></div>
+        <!-- Container para o seletor de tema -->
+        <div class="theme-selector">
+          <input type="checkbox" id="switch" onchange="onThemeChange()" value="dark" />
+        </div>
+    <div class="container">
+     <div id="escopo">
+      <div id="nucleo-escopo">
+        <div id="foto-perfil">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+          </svg>
+          <div id="mudar-foto">
+            <label for="mudar-foto-perfil"><div style="cursor: pointer;" id="mudar-foto" name="mudar-foto">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+              <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+              <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+            </svg>
+          </div></label>
+
+          <input type="file" style="display: none;" name="mudar-foto-perfil" id="mudar-foto-perfil">
+         </div>
+        </div><!--ficará a foto de perfil-->
+
+            <h2><div id="nome">Daniel Vitorio Augusto</div></h2>
+            <h3>CPF:<div id="cpf"></div></h3>
+            <h3>E-mail: <div id="email"></div></h3>
+            <h3>Telefone: <div id="tel"></div></h3>
+
+            <span onclick="alterarsenha()">
+            <button id="mudar-senha" type="submit" name="mudar-senha"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+            </svg>
+            Alterar senha</button></span>
+
+            <!--formulario para mudar senha-->
+            <div id="tela-mudar-senha">
+              <form action="mudar-senha">
+                <span  onclick="fechartela()" id="fechar" style="position:fixed;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg></span>
+
+                <label for="nova-senha">Nova senha:</label>
+                <input type="password" name="nova-senha" id="nova-senha">
+                <br>
+                <label for="repetir-senha">Repita a nova senha:</label>
+                <input type="password" name="repetir-senha" id="repetir-senha">
+                <br>
+                <button value="Mudar-senha">Mudar senha</button>
+              </form>
+
+            </div><!--form para mudar a senha -->
+      </div>
+     </div>
+
+     <div class="informacoes-gerais">
+       <div id="informacoes-gerais-nucleo">
+        <legend style="text-align: center;"><h1>Informações do perfil</h1></legend>
+
+        <div id="informacoes-empresa">
+          <legend><h3 style="text-align: center;">Informações da empresa</h3></legend>
+          <h4>EMPRESA: <div id="Enpresa"></div></h4>
+          <h4>CNPJ: <div id="Cnpj"></div></h4>
+          <h4>ENDEREÇO: <div id="endeteco"></div></h4>
+          <h4>TELEFONE: <div id="telefone"></div></h4>
+          <p style="margin-left: 2.5%; width: 95%; border-bottom: solid 1px var(--color-a-menu); padding-bottom: 10px;"></p>
+        </div><!--parte da informação dos dados da empresa-->
+
+        <div id="informacoes-funcionario">
+          <legend><h3 style="text-align: center;">Informações do funcionário</h3></legend>
+          <h4>CARGO: <div></div></h4>
+          <h4>CPF:</h4>
+          <h4>ENDEREÇO:</h4>
+          <h4>TELEFONE:</h4>
+          <h4>E-MAIL:</h4>
+        </div>
+       </div>
+     </div>
+
+
+    </div>
+<style>
+
+</style>
+    <!--script--------------------------------------------------------------------------------------------->
+
+    <script>
+      function alterarsenha() {
+        document.querySelector('#tela-mudar-senha').style = 'display:block;'
+      }// para abrir o formulario de mudar senha
+
+     function fechartela() {
+      document.querySelector('#tela-mudar-senha').style = 'display:none;'
+     }// para fechar a tela de mudar a senha
+    </script>
+  </body>
+</html>

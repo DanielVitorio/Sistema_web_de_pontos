@@ -1,0 +1,281 @@
+/* Define as variáveis CSS para o tema dark */
+:root {
+  --primary-text: #2a225a;
+  --text: #7f73a1;
+  --form-bg: #fafbff;
+  --bg: #eaeefd;
+  --hove: #dddddd;
+}
+
+/* Define as variáveis CSS para o tema light */
+[data-theme="light"] {
+  --primary-text: #fbf9ff;
+  --text: #b8bcd2;
+  --form-bg: #210856;
+  --bg: #493c65;
+  --hove: #7f73a1;
+}
+
+/* Define o estilo padrão para todos os elementos na página */
+* {
+  font-family: "Roboto", sans-serif;
+  transition-property: background color;
+  transition-duration: 600ms;
+  text-decoration: none;
+}
+
+/* Define a aparência do corpo da página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 100vh;
+}
+
+/* Define a aparência do contêiner principal que envolve o formulário */
+.main {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+/* Define a aparência da ilustração à esquerda do formulário */
+#illustration {
+  flex-grow: 1;
+  background-image: url("../");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* Define a aparência do cabeçalho do formulário */
+.form-header {
+  padding: 20px 0;
+  border-top: solid 1px var(--bg);
+}
+
+/* Define a aparência do link no cabeçalho do formulário */
+.form-header a {
+  color: var(--primary-text);
+  font-weight: bold;
+}
+
+/* Define a aparência do contêiner do formulário */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px;
+  background-color: var(--form-bg);
+  color: var(--text);
+}
+
+/* Define a aparência dos botões do formulário */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.form-buttons button {
+  margin: 0 5px;
+}
+
+.form-buttons button:first-child {
+  flex: 1;
+}
+
+.form-buttons button span {
+  font-size: 10px;
+}
+
+/* Define a aparência do formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px var(--bg);
+  border-bottom: solid 1px var(--bg);
+  padding: 20px 0;
+}
+
+/* Define a aparência do título do formulário */
+h3 {
+  font-weight: bold;
+  color: var(--primary-text);
+  margin: 0;
+}
+
+/* Define a aparência do texto abaixo do formulário*/
+
+  
+  
+  p {
+    font-size: small;
+  }
+  
+  input {
+    color:#bcbcbc;
+    margin: 10px 0;
+    border: solid 1px transparent;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: var(--bg);
+    outline: none;
+  }
+  
+  button {
+    border-radius: 8px;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+  }
+  
+  button:hover {
+    transform: scale(0.96);
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+    background-image:  linear-gradient(90deg, #00C1EB 0%, #0094FF 100%);
+    color: white;
+  }
+  
+  .theme-selector {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+  }
+  
+  /* Switch */
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 45px;
+    height: 25px;
+    display: block;
+    border-radius: 100px;
+    border: var(--primary-text) thin solid;
+    position: relative;
+  }/*linha do seletor*/
+  
+  label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-text);
+    border-radius: 90px;
+    transition: 0.3s;
+  } /*seletor*/
+  
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+    transition-timing-function: ease-in-out;
+  }
+  
+  label:active:after {
+    width: 20px;
+  }
+  
+  input:hover{
+    background-color: var(--hove);
+    color: rgb(39, 39, 39);
+  }
+
+  input:focus{
+    background-color: var(--hove);
+    border: solid 1px hsl(0, 0%, 22%);
+    color: rgb(39, 39, 39);
+  }
+
+  #spanCpf{
+    color: var(--text);
+  }
+
+  #spanSenha{
+    color: var(--text);
+  }
+
+  #incorreto{
+    font-size: 10pt;
+    position: center;
+    color: red;
+    display: none ;
+    margin: 0 auto;
+  } /*quando o usuario errar a senha ou o cpf irá aparecer*/
+
+  #logo{
+    width: 205px;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    /* Reduz a largura do contêiner principal */
+    .main {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    }
+    
+    /* Remove a ilustração à esquerda do formulário */
+    #illustration {
+    display: none;
+    }
+    
+    /* Ajusta a altura do corpo da página */
+    body {
+    height: auto;
+    }
+    
+    /* Define a aparência do cabeçalho do formulário em telas menores */
+    .form-header {
+    text-align: center;
+    }
+    
+    /* Define a aparência do link no cabeçalho do formulário em telas menores */
+    .form-header a {
+    display: block;
+    margin-bottom: 10px;
+    }
+    
+    /* Define a aparência do contêiner do formulário em telas menores */
+    .form-container {
+    border-radius: 0px 0px 0px 0px !important;
+    height: 100vh;
+    }
+    
+    /* Define a aparência dos botões do formulário em telas menores */
+    .form-buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    }
+    
+    .form-buttons button {
+    margin: 5px 0;
+    }
+
+
+    }
